@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }} — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-10">
+  <div class="flex items-center gap-3 mb-8">
+    <a href="{% url 'dashboard' %}" class="text-muted hover:text-text transition-colors text-sm">← Dashboard</a>
+    <span class="text-white/10">/</span>
+    <span class="text-sm text-muted">{{ title }}</span>
+  </div>
+
+  <h1 class="font-serif text-3xl font-semibold mb-8">{{ title }}</h1>
+
+  <div class="bg-bg2 border border-white/5 rounded-2xl p-8">
+    <form method="post" enctype="multipart/form-data" class="space-y-5">
+      {% csrf_token %}
+      {% for field in form %}
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">
+          {{ field.label }}{% if field.field.required %} <span class="text-accent">*</span>{% endif %}
+        </label>
+        {{ field }}
+        {% if field.help_text %}
+          <p class="text-xs text-muted/60 mt-1">{{ field.help_text }}</p>
+        {% endif %}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <p class="text-red-400 text-xs mt-1">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="bg-accent text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">
+          Save changes
+        </button>
+        <a href="{% url 'dashboard' %}" class="border border-white/10 text-muted px-6 py-2.5 rounded-xl text-sm hover:border-white/20 transition-colors">
+          Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
