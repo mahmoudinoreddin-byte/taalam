@@ -11,7 +11,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS_STRING = config('ALLOWED_HOSTS', default='*')
 ALLOWED_HOSTS = [h.strip() for h in ALLOWED_HOSTS_STRING.split(',')]
-CSRF_TRUSTED_ORIGINS = ['https://web-production-1335.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-1335.up.railway.app,https://web-production-c9d95.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
