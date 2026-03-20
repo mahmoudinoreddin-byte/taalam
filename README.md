@@ -28,11 +28,6 @@ git push -u origin main
 ### Step 3 — Set environment variables
 In Railway dashboard → your project → **Variables** tab, add:
 
-| Variable | Value |
-|---|---|
-| `SECRET_KEY` | any long random string (e.g. `abc123xyz...50chars`) |
-| `DEBUG` | `False` |
-| `ALLOWED_HOSTS` | `.railway.app,localhost` |
 
 ### Step 4 — Create admin user
 In Railway → your project → **Deploy** tab → click **Open Shell**:
