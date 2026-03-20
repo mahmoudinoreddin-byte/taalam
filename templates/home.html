@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Portfòlio — Build your professional presence{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-24 text-center">
+  <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs px-4 py-2 rounded-full mb-8">
+    <span class="w-2 h-2 bg-accent2 rounded-full inline-block"></span>
+    The modern CV platform
+  </div>
+  <h1 class="font-serif text-5xl md:text-6xl font-semibold leading-tight mb-6">
+    Your career, <span class="text-accent">beautifully</span><br>presented
+  </h1>
+  <p class="text-muted text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+    Create a stunning professional profile with a unique shareable link. Showcase your experience, projects, tools and more — all in one place.
+  </p>
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20">
+    <a href="{% url 'register' %}" class="bg-accent text-white px-8 py-3.5 rounded-xl font-medium hover:bg-accent/80 transition-all hover:-translate-y-0.5 text-sm">
+      Create your profile →
+    </a>
+    <a href="{% url 'shop' %}" class="border border-white/10 text-muted px-8 py-3.5 rounded-xl font-medium hover:border-white/20 hover:text-text transition-all text-sm">
+      Browse templates
+    </a>
+  </div>
+
+  <!-- Feature grid -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+      <div class="text-2xl mb-3">🔗</div>
+      <div class="font-medium text-sm mb-1">Unique URL</div>
+      <div class="text-muted text-xs">Share your profile at yoursite.railway.app/p/name</div>
+    </div>
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+      <div class="text-2xl mb-3">🚀</div>
+      <div class="font-medium text-sm mb-1">Projects</div>
+      <div class="text-muted text-xs">Showcase your work with status badges</div>
+    </div>
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+      <div class="text-2xl mb-3">📚</div>
+      <div class="font-medium text-sm mb-1">Courses</div>
+      <div class="text-muted text-xs">Learn and earn certificates</div>
+    </div>
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+      <div class="text-2xl mb-3">🛒</div>
+      <div class="font-medium text-sm mb-1">Shop</div>
+      <div class="text-muted text-xs">Download premium CV templates</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

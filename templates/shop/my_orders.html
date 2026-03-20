@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}My Orders — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <h1 class="font-serif text-2xl font-semibold mb-8">My Orders</h1>
+  {% if orders %}
+  <div class="space-y-3">
+    {% for order in orders %}
+    <div class="bg-bg2 border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="text-2xl">{{ order.product.emoji }}</div>
+        <div>
+          <p class="font-medium text-sm">{{ order.product.title }}</p>
+          <p class="text-muted text-xs">{{ order.created_at|date:"M d, Y" }} · ${{ order.amount }}</p>
+        </div>
+      </div>
+      {% if order.product.file %}
+      <a href="{{ order.product.file.url }}" class="text-xs text-accent border border-accent/20 px-3 py-1.5 rounded-full hover:bg-accent/10 transition-colors flex-shrink-0">
+        Download ↓
+      </a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-bg2 border border-dashed border-white/10 rounded-xl p-12 text-center">
+    <p class="text-muted text-sm">No orders yet.</p>
+    <a href="{% url 'shop' %}" class="text-accent text-sm mt-3 inline-block hover:underline">Browse the shop →</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

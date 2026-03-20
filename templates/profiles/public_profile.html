@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile.user.get_full_name|default:profile.user.username }} — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+
+  {% if is_owner %}
+  <div class="bg-accent/10 border border-accent/20 rounded-xl px-4 py-3 mb-6 flex items-center justify-between text-xs">
+    <span class="text-accent">✎ This is your public profile</span>
+    <a href="{% url 'dashboard' %}" class="text-accent hover:underline">Edit profile →</a>
+  </div>
+  {% endif %}
+
+  <!-- HERO -->
+  <div class="bg-bg2 border border-white/5 rounded-2xl p-6 sm:p-8 mb-4">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+      <div class="relative flex-shrink-0">
+        {% if profile.avatar %}
+          <img src="{{ profile.avatar.url }}" class="w-24 h-24 rounded-full object-cover" alt="Avatar">
+        {% else %}
+          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-serif text-2xl font-semibold">
+            {{ profile.user.first_name.0 }}{{ profile.user.last_name.0 }}
+          </div>
+        {% endif %}
+        {% if profile.is_available %}
+        <span class="absolute bottom-1 right-1 w-4 h-4 bg-accent2 rounded-full border-2 border-bg2"></span>
+        {% endif %}
+      </div>
+      <div class="flex-1">
+        <div class="text-xs text-accent uppercase tracking-widest mb-1">
+          {{ profile.current_position|default:profile.business_role|default:"Professional" }}
+        </div>
+        <h1 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-1">
+          {{ profile.user.first_name }} <span class="text-accent">{{ profile.user.last_name }}</span>
+        </h1>
+        <p class="text-muted text-sm mb-4">{{ profile.tagline }}</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          {% if profile.location %}<span class="text-xs bg-bg3 px-3 py-1 rounded-full text-muted">📍 {{ profile.location }}</span>{% endif %}
+          {% if profile.years_experience %}<span class="text-xs bg-bg3 px-3 py-1 rounded-full text-muted">💼 {{ profile.years_experience }} yrs exp</span>{% endif %}
+          {% if profile.remote_preference %}<span class="text-xs bg-bg3 px-3 py-1 rounded-full text-muted">🌐 {{ profile.get_remote_preference_display }}</span>{% endif %}
+          {% if profile.is_available %}<span class="text-xs bg-accent2/10 border border-accent2/20 text-accent2 px-3 py-1 rounded-full">● Available</span>{% endif %}
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {% if user.is_authenticated and not is_owner %}
+          <a href="{% url 'start_conversation' profile.user.username %}"
+             class="bg-accent text-white px-4 py-2 rounded-xl text-xs font-medium hover:bg-accent/80 transition-all hover:-translate-y-0.5">
+            Send message
+          </a>
+          {% endif %}
+          {% for link in social_links|slice:":4" %}
+          <a href="{{ link.url }}" target="_blank"
+             class="border border-white/10 text-muted px-4 py-2 rounded-xl text-xs hover:border-accent/30 hover:text-accent transition-colors">
+            {{ link.get_platform_display }}
+          </a>
+          {% endfor %}
+          <span class="text-xs text-muted/40 flex items-center">{{ profile.profile_views }} views</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB NAV — no split filter, hardcoded tabs -->
+  <div class="flex gap-2 overflow-x-auto scrollbar-none mb-6 pb-1">
+    <button onclick="showTab('profile')" id="tab-profile"
+      class="tab-btn flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium border transition-colors bg-accent text-white border-accent">
+      👤 Profile
+    </button>
+    <button onclick="showTab('professional')" id="tab-professional"
+      class="tab-btn flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium border transition-colors border-white/10 text-muted hover:border-white/20 hover:text-text">
+      💼 Professional
+    </button>
+    <button onclick="showTab('projects')" id="tab-projects"
+      class="tab-btn flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium border transition-colors border-white/10 text-muted hover:border-white/20 hover:text-text">
+      🚀 Projects
+    </button>
+    <button onclick="showTab('tools')" id="tab-tools"
+      class="tab-btn flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium border transition-colors border-white/10 text-muted hover:border-white/20 hover:text-text">
+      🛠️ Tools
+    </button>
+    <button onclick="showTab('links')" id="tab-links"
+      class="tab-btn flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium border transition-colors border-white/10 text-muted hover:border-white/20 hover:text-text">
+      🔗 Links
+    </button>
+  </div>
+
+  <!-- ── PROFILE TAB ── -->
+  <div id="panel-profile" class="tab-panel space-y-4">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="sm:col-span-2 bg-bg2 border border-white/5 rounded-2xl p-6">
+        <p class="text-xs text-muted uppercase tracking-wider mb-3">About me</p>
+        <p class="text-sm leading-relaxed text-text/80">{{ profile.bio|default:"No bio added yet." }}</p>
+        {% if profile.interests_list %}
+        <div class="flex flex-wrap gap-2 mt-4">
+          {% for i in profile.interests_list %}
+          <span class="bg-bg3 text-muted text-xs px-3 py-1 rounded-full">{{ i }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if profile.mbti %}
+        <div class="mt-4 inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs px-3 py-1.5 rounded-full">
+          🧠 {{ profile.mbti }}
+        </div>
+        {% endif %}
+      </div>
+      <div class="space-y-4">
+        {% if languages %}
+        <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+          <p class="text-xs text-muted uppercase tracking-wider mb-3">Languages</p>
+          <div class="space-y-3">
+            {% for lang in languages %}
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span>{{ lang.name }}</span>
+                <span class="text-muted">{{ lang.get_proficiency_display }}</span>
+              </div>
+              <div class="progress-bar h-1"><div class="progress-fill" style="width:{{ lang.proficiency }}%"></div></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+          <p class="text-xs text-muted uppercase tracking-wider mb-3">Details</p>
+          <div class="space-y-2 text-xs text-muted">
+            {% if profile.location %}<div>📍 {{ profile.location }}</div>{% endif %}
+            {% if profile.birth_year %}<div>🎂 {{ profile.birth_year }}</div>{% endif %}
+            {% if profile.expected_salary %}<div>💰 {{ profile.expected_salary }}</div>{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROFESSIONAL TAB ── -->
+  <div id="panel-professional" class="tab-panel hidden space-y-4">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="sm:col-span-2 bg-bg2 border border-white/5 rounded-2xl p-6">
+        <p class="text-xs text-muted uppercase tracking-wider mb-4">Experience</p>
+        {% if experiences %}
+        <div class="relative tl-line pl-6 space-y-5">
+          {% for exp in experiences %}
+          <div class="relative">
+            <div class="absolute -left-6 top-1.5 w-2 h-2 rounded-full bg-accent border border-bg2 -translate-x-0.5"></div>
+            <p class="text-xs text-accent uppercase tracking-wider">{{ exp.company }}</p>
+            <p class="font-medium text-sm mt-0.5">{{ exp.role }}</p>
+            <p class="text-muted text-xs">{{ exp.start_date|date:"M Y" }} — {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}</p>
+            {% if exp.description %}<p class="text-muted text-xs mt-1.5 leading-relaxed">{{ exp.description }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}<p class="text-muted text-sm">No experience added yet.</p>{% endif %}
+      </div>
+      <div class="space-y-4">
+        {% if skills %}
+        <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+          <p class="text-xs text-muted uppercase tracking-wider mb-3">Skills</p>
+          <div class="flex flex-wrap gap-2">
+            {% for skill in skills %}
+            <span class="text-xs bg-accent/10 border border-accent/20 text-accent px-2.5 py-1 rounded-full">{{ skill.name }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% if certifications %}
+        <div class="bg-bg2 border border-white/5 rounded-2xl p-5">
+          <p class="text-xs text-muted uppercase tracking-wider mb-3">Certifications</p>
+          <div class="space-y-2">
+            {% for cert in certifications %}
+            <div class="text-xs">
+              <span class="text-yellow-400">🏅</span>
+              {% if cert.url %}<a href="{{ cert.url }}" class="hover:text-accent transition-colors">{{ cert.name }}</a>{% else %}{{ cert.name }}{% endif %}
+              {% if cert.issuer %}<p class="text-muted">{{ cert.issuer }}{% if cert.year %} · {{ cert.year }}{% endif %}</p>{% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECTS TAB ── -->
+  <div id="panel-projects" class="tab-panel hidden">
+    {% if projects %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {% for project in projects %}
+      <div class="bg-bg2 border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-colors">
+        <div class="h-28 flex items-center justify-center text-4xl relative" style="background: rgba(124,106,247,0.06)">
+          {{ project.emoji }}
+          <span class="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full
+            {% if project.status == 'live' %}badge-live
+            {% elif project.status == 'wip' %}badge-wip
+            {% else %}badge-planned{% endif %}">
+            {{ project.get_status_display }}
+          </span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-medium text-sm mb-1">{{ project.title }}</h3>
+          <p class="text-muted text-xs leading-relaxed">{{ project.description|truncatechars:100 }}</p>
+          {% if project.tech_list %}
+          <div class="flex flex-wrap gap-1 mt-3">
+            {% for tech in project.tech_list|slice:":4" %}
+            <span class="text-xs bg-bg3 text-muted px-2 py-0.5 rounded-full">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <div class="flex gap-2 mt-3">
+            {% if project.project_url %}<a href="{{ project.project_url }}" target="_blank" class="text-xs text-accent hover:underline">View project ↗</a>{% endif %}
+            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" class="text-xs text-muted hover:text-accent transition-colors">GitHub</a>{% endif %}
+            {% if project.looking_for_collaborators %}<span class="text-xs text-gold">🤝 Collab welcome</span>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="bg-bg2 border border-dashed border-white/10 rounded-xl p-12 text-center">
+      <p class="text-muted text-sm">No projects added yet.</p>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- ── TOOLS TAB ── -->
+  <div id="panel-tools" class="tab-panel hidden">
+    {% if tools %}
+    {% regroup tools by get_category_display as tool_groups %}
+    {% for group in tool_groups %}
+    <div class="mb-6">
+      <p class="text-xs text-muted uppercase tracking-wider mb-3">{{ group.grouper }}</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {% for tool in group.list %}
+        <div class="bg-bg2 border border-white/5 rounded-xl p-4 text-center hover:border-white/10 transition-colors">
+          <div class="text-2xl mb-2">{{ tool.emoji }}</div>
+          <p class="text-sm font-medium">{{ tool.name }}</p>
+          {% if tool.description %}<p class="text-xs text-muted mt-0.5">{{ tool.description }}</p>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="bg-bg2 border border-dashed border-white/10 rounded-xl p-12 text-center">
+      <p class="text-muted text-sm">No tools added yet.</p>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- ── LINKS TAB ── -->
+  <div id="panel-links" class="tab-panel hidden">
+    {% if social_links %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+      {% for link in social_links %}
+      <a href="{{ link.url }}" target="_blank"
+         class="bg-bg2 border border-white/5 rounded-xl p-4 flex items-center gap-3 hover:border-accent/30 hover:bg-accent/5 transition-colors group">
+        <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-lg flex-shrink-0">
+          {% if link.platform == 'linkedin' %}💼
+          {% elif link.platform == 'github' %}🐙
+          {% elif link.platform == 'behance' %}🎨
+          {% elif link.platform == 'twitter' %}🐦
+          {% elif link.platform == 'instagram' %}📷
+          {% elif link.platform == 'youtube' %}▶️
+          {% elif link.platform == 'telegram' %}✈️
+          {% elif link.platform == 'discord' %}💬
+          {% else %}🔗{% endif %}
+        </div>
+        <div>
+          <p class="text-sm font-medium group-hover:text-accent transition-colors">{{ link.label|default:link.get_platform_display }}</p>
+          <p class="text-muted text-xs truncate max-w-xs">{{ link.url }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if user.is_authenticated and not is_owner %}
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-6">
+      <p class="text-xs text-muted uppercase tracking-wider mb-4">Send a message</p>
+      <a href="{% url 'start_conversation' profile.user.username %}"
+         class="inline-block bg-accent text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">
+        Message {{ profile.user.first_name }} →
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('bg-accent','text-white','border-accent');
+    b.classList.add('border-white/10','text-muted');
+  });
+  document.getElementById('panel-' + id).classList.remove('hidden');
+  const btn = document.getElementById('tab-' + id);
+  btn.classList.add('bg-accent','text-white','border-accent');
+  btn.classList.remove('border-white/10','text-muted');
+}
+</script>
+{% endblock %}

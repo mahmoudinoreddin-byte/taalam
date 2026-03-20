@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}My Courses — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="font-serif text-2xl font-semibold">My Courses</h1>
+    <a href="{% url 'course_list' %}" class="text-xs border border-white/10 text-muted px-4 py-2 rounded-full hover:border-white/20 transition-colors">Browse all</a>
+  </div>
+  {% if enrollments %}
+  <div class="space-y-4">
+    {% for enrollment in enrollments %}
+    {% with course=enrollment.course total=enrollment.course.lessons.count done=enrollment.progress.count %}
+    <div class="bg-bg2 border border-white/5 rounded-2xl p-5 flex items-center gap-4">
+      <div class="text-3xl flex-shrink-0">{{ course.emoji }}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1">
+          <p class="font-medium text-sm">{{ course.title }}</p>
+          {% if enrollment.completed %}
+          <span class="text-xs badge-free px-2 py-0.5 rounded-full">✓ Completed</span>
+          {% endif %}
+        </div>
+        <p class="text-muted text-xs mb-2">{{ done }}/{{ total }} lessons · Enrolled {{ enrollment.enrolled_at|date:"M d, Y" }}</p>
+        <div class="progress-bar h-1.5">
+          <div class="progress-fill" style="width:{% if total %}{% widthratio done total 100 %}{% else %}0{% endif %}%;height:6px"></div>
+        </div>
+      </div>
+      <a href="{% url 'course_detail' course.pk %}" class="text-xs text-accent hover:underline flex-shrink-0">Continue →</a>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-bg2 border border-dashed border-white/10 rounded-xl p-12 text-center">
+    <p class="text-muted text-sm mb-3">You haven't enrolled in any courses yet.</p>
+    <a href="{% url 'course_list' %}" class="text-accent text-sm hover:underline">Browse courses →</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
