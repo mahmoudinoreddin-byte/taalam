@@ -322,25 +322,21 @@
       </a>
     </div>
     {% endif %}
+
+  <!-- ── BLOG TAB ── -->
+  <div id="panel-blog" class="tab-panel hidden">
+    <div class="text-center py-8">
+      <a href="/blog/u/{{ profile.user.username }}/"
+         class="bg-accent text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">
+        View {{ profile.user.get_full_name|default:profile.user.username }}&#39;s Blog →
+      </a>
+    </div>
   </div>
 
 </div>
 
-  <!-- ── BLOG TAB ── -->
-  <div id="panel-blog" class="tab-panel hidden">
-    <div id="blog-posts-container">
-      <p class="text-muted text-sm text-center py-8">Loading posts...</p>
-    </div>
-    <div class="mt-4 text-center">
-      <a href="/blog/u/{{ profile.user.username }}/" class="text-xs text-accent hover:underline">View all posts →</a>
-    </div>
-  </div>
-
 <script>
 function showTab(id) {
-  if (id === 'blog' && document.getElementById('blog-posts-container').dataset.loaded !== 'true') {
-    loadBlogPosts();
-  }
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
   document.querySelectorAll('.tab-btn').forEach(b => {
     b.classList.remove('bg-accent','text-white','border-accent');
@@ -350,16 +346,6 @@ function showTab(id) {
   const btn = document.getElementById('tab-' + id);
   btn.classList.add('bg-accent','text-white','border-accent');
   btn.classList.remove('border-white/10','text-muted');
-}
-
-function loadBlogPosts() {
-  const container = document.getElementById('blog-posts-container');
-  fetch('/blog/u/{{ profile.user.username }}/?ajax=1')
-    .then(() => {
-      // Redirect to user blog page since we can't do true AJAX without DRF
-      container.innerHTML = '<div class="text-center py-4"><a href="/blog/u/{{ profile.user.username }}/" class="bg-accent text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">View {{ profile.user.get_full_name|default:profile.user.username }}'s Blog →</a></div>';
-      container.dataset.loaded = 'true';
-    });
 }
 </script>
 {% endblock %}
