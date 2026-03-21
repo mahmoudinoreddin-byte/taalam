@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}My Posts — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="font-serif text-2xl font-semibold">My Posts</h1>
+    <a href="{% url 'create_post' %}" class="bg-accent text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-accent/80 transition-colors">+ New post</a>
+  </div>
+  {% if posts %}
+  <div class="space-y-3">
+    {% for post in posts %}
+    <div class="bg-bg2 border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-0.5">
+          <a href="{% url 'post_detail' post.slug %}" class="font-medium text-sm hover:text-accent transition-colors truncate">{{ post.title }}</a>
+          {% if post.status == 'draft' %}<span class="text-xs bg-gold/10 text-gold border border-gold/20 px-2 py-0.5 rounded-full flex-shrink-0">Draft</span>{% endif %}
+        </div>
+        <p class="text-muted text-xs">{{ post.get_post_type_display }} · {{ post.created_at|date:"M d, Y" }} · 👁 {{ post.views }} · 💬 {{ post.comment_count }}</p>
+      </div>
+      <div class="flex gap-2 flex-shrink-0">
+        <a href="{% url 'edit_post' post.slug %}" class="text-xs text-muted hover:text-accent transition-colors">Edit</a>
+        <a href="{% url 'delete_post' post.slug %}" onclick="return confirm('Delete?')" class="text-xs text-muted hover:text-red-400 transition-colors">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-bg2 border border-dashed border-white/10 rounded-xl p-12 text-center">
+    <p class="text-muted text-sm mb-3">No posts yet.</p>
+    <a href="{% url 'create_post' %}" class="text-accent text-sm hover:underline">Write your first post →</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
