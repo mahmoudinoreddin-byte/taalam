@@ -39,7 +39,9 @@ class Profile(models.Model):
     website = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     telegram = models.CharField(max_length=100, blank=True)
-    whatsapp = models.CharField(max_length=20, blank=True)
+    whatsapp = models.CharField(max_length=20, blank=True, default='')
+    phone = models.CharField(max_length=30, blank=True, default='')
+    contact_email = models.EmailField(blank=True, default='')
     calendly = models.URLField(blank=True)
     # Theme
     theme_color = models.CharField(max_length=7, default='#7c6af7')
@@ -138,7 +140,6 @@ class Project(models.Model):
     duration = models.CharField(max_length=100, blank=True)
     looking_for_collaborators = models.BooleanField(default=False)
     doc_url = models.URLField(blank=True, help_text='Link to documentation')
-    doc_label = models.CharField(blank=True, max_length=100, help_text='Documentation button label')
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -175,7 +176,8 @@ class SocialLink(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='social_links')
     platform = models.CharField(max_length=20, choices=PLATFORM_CHOICES)
     url = models.URLField()
-    label = models.CharField(max_length=100, blank=True)
+    label = models.CharField(max_length=100, blank=True, default='')
+    custom_label = models.CharField(max_length=100, blank=True, default='')
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
