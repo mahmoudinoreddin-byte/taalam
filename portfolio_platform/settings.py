@@ -106,3 +106,31 @@ if not DEBUG:
 
 # Allow HTML content in blog posts
 BLEACH_ALLOWED_TAGS = ['p','h1','h2','h3','h4','ul','ol','li','strong','em','a','img','blockquote','code','pre','br']
+
+# Minimal logging - only errors, single line format
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'minimal': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'minimal',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
