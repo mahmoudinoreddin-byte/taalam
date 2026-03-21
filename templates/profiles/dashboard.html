@@ -44,7 +44,7 @@
         <a href="{% url 'edit_personal' %}" class="text-xs text-accent hover:underline">Edit</a>
       </div>
       <h3 class="font-medium text-sm mb-1">{% trans "Personal Profile" %}</h3>
-      <p class="text-muted text-xs leading-relaxed">{{ profile.bio|truncatechars:80|default:"{% trans "No bio yet. Add your story." %}" }}</p>
+      <p class="text-muted text-xs leading-relaxed">{{ profile.bio|truncatechars:80|default:"No bio yet. Add your story." }}</p>
     </div>
 
     <!-- Professional -->
