@@ -122,10 +122,9 @@ class LanguageForm(forms.ModelForm):
 class SocialLinkForm(forms.ModelForm):
     class Meta:
         model = SocialLink
-        fields = ['platform','url','label','custom_label']
+        fields = ['platform','url','label']
         widgets = {
             'platform': forms.Select(attrs={'class': SELECT}),
             'url': forms.URLInput(attrs={'class': INPUT}),
             'label': forms.TextInput(attrs={'class': INPUT, 'placeholder': 'Display name or handle'}),
-            'custom_label': forms.TextInput(attrs={'class': INPUT, 'placeholder': 'e.g. My Portfolio, Dev Blog...'}),
         }
