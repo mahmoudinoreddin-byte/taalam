@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ action }} Post — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <div class="flex items-center gap-3 mb-8">
+    <a href="{% url 'my_posts' %}" class="text-muted hover:text-text text-sm">← My posts</a>
+    <span class="text-white/10">/</span>
+    <span class="text-muted text-sm">{{ action }} post</span>
+  </div>
+  <h1 class="font-serif text-2xl font-semibold mb-8">{{ action }} post</h1>
+
+  <div class="bg-bg2 border border-white/5 rounded-2xl p-8">
+    <form method="post" enctype="multipart/form-data" class="space-y-5">
+      {% csrf_token %}
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">Title <span class="text-accent">*</span></label>
+        {{ form.title }}
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs text-muted mb-1.5 block">Type</label>
+          {{ form.post_type }}
+        </div>
+        <div>
+          <label class="text-xs text-muted mb-1.5 block">Status</label>
+          {{ form.status }}
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">Excerpt <span class="text-muted/50">(shown in feed)</span></label>
+        {{ form.excerpt }}
+      </div>
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">Content <span class="text-accent">*</span></label>
+        <!-- Quick formatting toolbar -->
+        <div class="flex gap-1.5 mb-2 flex-wrap">
+          <button type="button" onclick="wrap('content','<b>','</b>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors font-bold">B</button>
+          <button type="button" onclick="wrap('content','<i>','</i>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors italic">I</button>
+          <button type="button" onclick="wrap('content','<h2>','</h2>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">H2</button>
+          <button type="button" onclick="wrap('content','<h3>','</h3>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">H3</button>
+          <button type="button" onclick="wrap('content','<ul>\n<li>','</li>\n</ul>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">List</button>
+          <button type="button" onclick="wrap('content','<blockquote>','</blockquote>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">Quote</button>
+          <button type="button" onclick="wrap('content','<code>','</code>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors font-mono">code</button>
+          <button type="button" onclick="wrap('content','<pre>','</pre>')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors font-mono">pre</button>
+          <button type="button" onclick="insertLink('content')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">🔗 Link</button>
+          <button type="button" onclick="insertImg('content')" class="text-xs bg-bg3 border border-white/10 text-muted px-2 py-1 rounded-lg hover:text-text transition-colors">🖼 Img</button>
+        </div>
+        {{ form.content }}
+        <p class="text-xs text-muted/50 mt-1">HTML is supported. Use the buttons above for quick formatting.</p>
+      </div>
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">Cover image</label>
+        {{ form.cover_image }}
+        {% if post.cover_image %}<p class="text-xs text-muted mt-1">Current: {{ post.cover_image.name }}</p>{% endif %}
+      </div>
+      <div>
+        <label class="text-xs text-muted mb-1.5 block">Tags <span class="text-muted/50">(comma separated)</span></label>
+        {{ form.tags }}
+      </div>
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="bg-accent text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">
+          {{ action }} post
+        </button>
+        <a href="{% url 'my_posts' %}" class="border border-white/10 text-muted px-6 py-2.5 rounded-xl text-sm hover:border-white/20 transition-colors">{% trans "Cancel" %}</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function wrap(fieldId, open, close) {
+  const el = document.getElementById('id_' + fieldId);
+  const start = el.selectionStart, end = el.selectionEnd;
+  const selected = el.value.substring(start, end);
+  el.value = el.value.substring(0, start) + open + selected + close + el.value.substring(end);
+  el.focus();
+  el.setSelectionRange(start + open.length, start + open.length + selected.length);
+}
+function insertLink(fieldId) {
+  const url = prompt('Enter URL:');
+  const text = prompt('Enter link text:');
+  if (url && text) {
+    const el = document.getElementById('id_' + fieldId);
+    const pos = el.selectionStart;
+    const tag = `<a href="${url}">${text}</a>`;
+    el.value = el.value.substring(0, pos) + tag + el.value.substring(pos);
+  }
+}
+function insertImg(fieldId) {
+  const url = prompt('Enter image URL:');
+  const alt = prompt('Alt text:') || '';
+  if (url) {
+    const el = document.getElementById('id_' + fieldId);
+    const pos = el.selectionStart;
+    const tag = `<img src="${url}" alt="${alt}">`;
+    el.value = el.value.substring(0, pos) + tag + el.value.substring(pos);
+  }
+}
+</script>
+{% endblock %}
