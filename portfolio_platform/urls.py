@@ -3,10 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import render
-from blog.models import Post
 
 def home_view(request):
-    recent_posts = Post.objects.filter(status='published').select_related('author','author__profile').order_by('-created_at')[:6]
+    try:
+        from blog.models import Post
+        recent_posts = Post.objects.filter(status='published').select_related('author', 'author__profile').order_by('-created_at')[:6]
+    except Exception:
+        recent_posts = []
     return render(request, 'home.html', {'recent_posts': recent_posts})
 
 urlpatterns = [
