@@ -63,6 +63,18 @@ def create_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            # Ensure slug is generated from title
+            if not post.slug:
+                from django.utils.text import slugify
+                import uuid
+                base = slugify(post.title) or str(uuid.uuid4())[:8]
+                slug = base
+                n = 1
+                from blog.models import Post
+                while Post.objects.filter(slug=slug).exists():
+                    slug = f'{base}-{n}'
+                    n += 1
+                post.slug = slug
             post.save()
             messages.success(request, 'Post published!')
             return redirect('post_detail', slug=post.slug)
