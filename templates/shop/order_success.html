@@ -1,0 +1,18 @@
+{% load i18n %}
+{% extends 'base.html' %}
+{% block title %}Order Confirmed — Portfòlio{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-20 text-center">
+  <div class="text-5xl mb-6">🎉</div>
+  <h1 class="font-serif text-2xl font-semibold mb-3">Purchase confirmed!</h1>
+  <p class="text-muted text-sm mb-8">You've successfully purchased <strong class="text-text">{{ order.product.title }}</strong>.</p>
+  {% if order.product.file %}
+  <a href="{{ order.product.file.url }}" class="bg-accent text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-accent/80 transition-colors">
+    Download now ↓
+  </a>
+  {% endif %}
+  <div class="mt-6">
+    <a href="{% url 'shop' %}" class="text-muted text-sm hover:text-accent transition-colors">Back to shop</a>
+  </div>
+</div>
+{% endblock %}

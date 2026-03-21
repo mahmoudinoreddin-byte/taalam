@@ -1,0 +1,318 @@
+# Arabic translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+
+msgid "Create your profile"
+msgstr "أنشئ ملفك الشخصي"
+
+msgid "Explore the feed"
+msgstr "استكشف المحتوى"
+
+msgid "Latest from the community"
+msgstr "آخر منشورات المجتمع"
+
+msgid "Blog Feed"
+msgstr "المدونة"
+
+msgid "Write post"
+msgstr "كتابة مقال"
+
+msgid "All"
+msgstr "الكل"
+
+msgid "Posts"
+msgstr "منشورات"
+
+msgid "Articles"
+msgstr "مقالات"
+
+msgid "Read more"
+msgstr "اقرأ المزيد"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Courses"
+msgstr "الدورات"
+
+msgid "Shop"
+msgstr "المتجر"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+msgid "My Profile"
+msgstr "ملفي الشخصي"
+
+msgid "Messages"
+msgstr "الرسائل"
+
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+msgid "Professional"
+msgstr "المهني"
+
+msgid "Projects"
+msgstr "المشاريع"
+
+msgid "Tools"
+msgstr "الأدوات"
+
+msgid "Links"
+msgstr "الروابط"
+
+msgid "Blog"
+msgstr "المدونة"
+
+msgid "About me"
+msgstr "عني"
+
+msgid "Languages"
+msgstr "اللغات"
+
+msgid "Experience"
+msgstr "الخبرة"
+
+msgid "Skills"
+msgstr "المهارات"
+
+msgid "Available"
+msgstr "متاح"
+
+msgid "Send message"
+msgstr "إرسال رسالة"
+
+msgid "View profile"
+msgstr "عرض الملف"
+
+msgid "Leave a comment"
+msgstr "اترك تعليقاً"
+
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+msgid "Create account"
+msgstr "إنشاء حساب"
+
+msgid "Get Started"
+msgstr "ابدأ الآن"
+
+msgid "Inbox"
+msgstr "صندوق الوارد"
+
+msgid "Type a message..."
+msgstr "اكتب رسالة..."
+
+msgid "View all"
+msgstr "عرض الكل"
+
+msgid "No posts yet."
+msgstr "لا توجد منشورات بعد."
+
+msgid "Read"
+msgstr "اقرأ"
+
+msgid "View public profile"
+msgstr "عرض الملف العام"
+
+msgid "Your public profile link"
+msgstr "رابط ملفك الشخصي العام"
+
+msgid "Copy link"
+msgstr "نسخ الرابط"
+
+msgid "Personal Profile"
+msgstr "الملف الشخصي"
+
+msgid "No bio yet. Add your story."
+msgstr "لا توجد نبذة بعد. أضف قصتك."
+
+msgid "Profile Stats"
+msgstr "إحصائيات الملف"
+
+msgid "Blog & Articles"
+msgstr "المدونة والمقالات"
+
+msgid "Save changes"
+msgstr "حفظ التغييرات"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Browse templates"
+msgstr "تصفح القوالب"
+
+msgid "Purchase now"
+msgstr "اشترِ الآن"
+
+msgid "Login to purchase"
+msgstr "سجّل الدخول للشراء"
+
+msgid "Confirm purchase"
+msgstr "تأكيد الشراء"
+
+msgid "Confirm & Pay"
+msgstr "تأكيد والدفع"
+
+msgid "Secure checkout · Instant download"
+msgstr "دفع آمن · تحميل فوري"
+
+msgid "My Orders"
+msgstr "طلباتي"
+
+msgid "No orders yet."
+msgstr "لا توجد طلبات بعد."
+
+msgid "Enroll for free"
+msgstr "سجّل مجاناً"
+
+msgid "My courses"
+msgstr "دوراتي"
+
+msgid "Mark as complete"
+msgstr "وضع علامة مكتمل"
+
+msgid "Course completed"
+msgstr "تم إكمال الدورة"
+
+msgid "New message"
+msgstr "رسالة جديدة"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Reply"
+msgstr "رد"
+
+msgid "Details"
+msgstr "التفاصيل"
+
+msgid "No experience added yet."
+msgstr "لم تتم إضافة خبرات بعد."
+
+msgid "No projects added yet."
+msgstr "لم تتم إضافة مشاريع بعد."
+
+msgid "No tools added yet."
+msgstr "لم تتم إضافة أدوات بعد."
+
+msgid "View project"
+msgstr "عرض المشروع"
+
+msgid "No comments yet. Be the first!"
+msgstr "لا توجد تعليقات بعد. كن الأول!"
+
+msgid "Post comment"
+msgstr "نشر التعليق"
+
+msgid "Leave a comment"
+msgstr "اترك تعليقاً"
+
+msgid "The modern CV platform"
+msgstr "منصة السيرة الذاتية الحديثة"
+
+msgid "Your career,"
+msgstr "مسيرتك المهنية،"
+
+msgid "beautifully"
+msgstr "بشكل جميل"
+
+msgid "presented"
+msgstr "مقدَّمة"
+
+msgid "Create your profile"
+msgstr "أنشئ ملفك الشخصي"
+
+msgid "Explore the feed"
+msgstr "استكشف المحتوى"
+
+msgid "Unique URL"
+msgstr "رابط فريد"
+
+msgid "Share your profile at /p/yourname"
+msgstr "شارك ملفك على /p/اسمك"
+
+msgid "Write articles and project docs"
+msgstr "اكتب مقالات ووثائق المشاريع"
+
+msgid "Teach and earn certificates"
+msgstr "علّم واحصل على شهادات"
+
+msgid "Sell templates and digital products"
+msgstr "بِع القوالب والمنتجات الرقمية"
+
+msgid "Latest from the community"
+msgstr "آخر منشورات المجتمع"
+
+msgid "View all"
+msgstr "عرض الكل"
+
+msgid "Welcome back"
+msgstr "مرحباً بعودتك"
+
+msgid "Sign in to your account"
+msgstr "سجّل الدخول إلى حسابك"
+
+msgid "Username"
+msgstr "اسم المستخدم"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "No account yet?"
+msgstr "ليس لديك حساب بعد؟"
+
+msgid "Create one"
+msgstr "أنشئ حساباً"
+
+msgid "Create your account"
+msgstr "إنشاء حسابك"
+
+msgid "Start building your professional profile"
+msgstr "ابدأ في بناء ملفك المهني"
+
+msgid "First name"
+msgstr "الاسم الأول"
+
+msgid "Last name"
+msgstr "اسم العائلة"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+msgid "Already have an account?"
+msgstr "هل لديك حساب بالفعل؟"
+
+msgid "Feed"
+msgstr "المحتوى"
+
+msgid "Posts, articles & docs from the community"
+msgstr "منشورات ومقالات ووثائق المجتمع"
+
+msgid "Write post"
+msgstr "كتابة مقال"
+
+msgid "Project Docs"
+msgstr "وثائق المشاريع"
+
+msgid "Tool Docs"
+msgstr "وثائق الأدوات"
+
+msgid "Read more"
+msgstr "اقرأ المزيد"
+
+msgid "No posts yet."
+msgstr "لا توجد منشورات بعد."
+
+msgid "Write the first post"
+msgstr "اكتب المنشور الأول"

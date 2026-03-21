@@ -1,0 +1,318 @@
+# French translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+
+msgid "Create your profile"
+msgstr "Créer votre profil"
+
+msgid "Explore the feed"
+msgstr "Explorer le fil"
+
+msgid "Latest from the community"
+msgstr "Dernières publications"
+
+msgid "Blog Feed"
+msgstr "Fil de blog"
+
+msgid "Write post"
+msgstr "Écrire un article"
+
+msgid "All"
+msgstr "Tout"
+
+msgid "Posts"
+msgstr "Publications"
+
+msgid "Articles"
+msgstr "Articles"
+
+msgid "Read more"
+msgstr "Lire plus"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Courses"
+msgstr "Cours"
+
+msgid "Shop"
+msgstr "Boutique"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "My Profile"
+msgstr "Mon profil"
+
+msgid "Messages"
+msgstr "Messages"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Professional"
+msgstr "Professionnel"
+
+msgid "Projects"
+msgstr "Projets"
+
+msgid "Tools"
+msgstr "Outils"
+
+msgid "Links"
+msgstr "Liens"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "About me"
+msgstr "À propos"
+
+msgid "Languages"
+msgstr "Langues"
+
+msgid "Experience"
+msgstr "Expérience"
+
+msgid "Skills"
+msgstr "Compétences"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Send message"
+msgstr "Envoyer un message"
+
+msgid "View profile"
+msgstr "Voir le profil"
+
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+msgid "Sign in"
+msgstr "Se connecter"
+
+msgid "Create account"
+msgstr "Créer un compte"
+
+msgid "Get Started"
+msgstr "Commencer"
+
+msgid "Inbox"
+msgstr "Boîte de réception"
+
+msgid "Type a message..."
+msgstr "Écrivez un message..."
+
+msgid "View all"
+msgstr "Voir tout"
+
+msgid "No posts yet."
+msgstr "Aucune publication pour l'instant."
+
+msgid "Read"
+msgstr "Lire"
+
+msgid "View public profile"
+msgstr "Voir le profil public"
+
+msgid "Your public profile link"
+msgstr "Votre lien de profil public"
+
+msgid "Copy link"
+msgstr "Copier le lien"
+
+msgid "Personal Profile"
+msgstr "Profil personnel"
+
+msgid "No bio yet. Add your story."
+msgstr "Pas de bio. Racontez votre histoire."
+
+msgid "Profile Stats"
+msgstr "Statistiques"
+
+msgid "Blog & Articles"
+msgstr "Blog & Articles"
+
+msgid "Save changes"
+msgstr "Enregistrer"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Browse templates"
+msgstr "Parcourir les modèles"
+
+msgid "Purchase now"
+msgstr "Acheter maintenant"
+
+msgid "Login to purchase"
+msgstr "Connectez-vous pour acheter"
+
+msgid "Confirm purchase"
+msgstr "Confirmer l'achat"
+
+msgid "Confirm & Pay"
+msgstr "Confirmer & Payer"
+
+msgid "Secure checkout · Instant download"
+msgstr "Paiement sécurisé · Téléchargement instantané"
+
+msgid "My Orders"
+msgstr "Mes commandes"
+
+msgid "No orders yet."
+msgstr "Aucune commande pour l'instant."
+
+msgid "Enroll for free"
+msgstr "S'inscrire gratuitement"
+
+msgid "My courses"
+msgstr "Mes cours"
+
+msgid "Mark as complete"
+msgstr "Marquer comme terminé"
+
+msgid "Course completed"
+msgstr "Cours terminé"
+
+msgid "New message"
+msgstr "Nouveau message"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Reply"
+msgstr "Répondre"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "No experience added yet."
+msgstr "Aucune expérience ajoutée."
+
+msgid "No projects added yet."
+msgstr "Aucun projet ajouté."
+
+msgid "No tools added yet."
+msgstr "Aucun outil ajouté."
+
+msgid "View project"
+msgstr "Voir le projet"
+
+msgid "No comments yet. Be the first!"
+msgstr "Aucun commentaire. Soyez le premier !"
+
+msgid "Post comment"
+msgstr "Publier le commentaire"
+
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+msgid "The modern CV platform"
+msgstr "La plateforme CV moderne"
+
+msgid "Your career,"
+msgstr "Votre carrière,"
+
+msgid "beautifully"
+msgstr "magnifiquement"
+
+msgid "presented"
+msgstr "présentée"
+
+msgid "Create your profile"
+msgstr "Créer votre profil"
+
+msgid "Explore the feed"
+msgstr "Explorer le fil"
+
+msgid "Unique URL"
+msgstr "URL unique"
+
+msgid "Share your profile at /p/yourname"
+msgstr "Partagez votre profil sur /p/votrenom"
+
+msgid "Write articles and project docs"
+msgstr "Rédigez articles et documentation"
+
+msgid "Teach and earn certificates"
+msgstr "Enseignez et obtenez des certificats"
+
+msgid "Sell templates and digital products"
+msgstr "Vendez des modèles et produits numériques"
+
+msgid "Latest from the community"
+msgstr "Dernières publications"
+
+msgid "View all"
+msgstr "Voir tout"
+
+msgid "Welcome back"
+msgstr "Bon retour"
+
+msgid "Sign in to your account"
+msgstr "Connectez-vous à votre compte"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "No account yet?"
+msgstr "Pas encore de compte ?"
+
+msgid "Create one"
+msgstr "Créez-en un"
+
+msgid "Create your account"
+msgstr "Créer votre compte"
+
+msgid "Start building your professional profile"
+msgstr "Commencez à construire votre profil"
+
+msgid "First name"
+msgstr "Prénom"
+
+msgid "Last name"
+msgstr "Nom de famille"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+msgid "Feed"
+msgstr "Fil"
+
+msgid "Posts, articles & docs from the community"
+msgstr "Publications, articles et docs de la communauté"
+
+msgid "Write post"
+msgstr "Écrire un article"
+
+msgid "Project Docs"
+msgstr "Docs de projets"
+
+msgid "Tool Docs"
+msgstr "Docs d'outils"
+
+msgid "Read more"
+msgstr "Lire plus"
+
+msgid "No posts yet."
+msgstr "Aucune publication."
+
+msgid "Write the first post"
+msgstr "Écrire le premier article"
