@@ -1,0 +1,11 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "python manage.py collectstatic --noinput && python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn portfolio_platform.wsgi --bind 0.0.0.0:$PORT --workers 2 --log-file - --log-level warning",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 3
+  }
+}
